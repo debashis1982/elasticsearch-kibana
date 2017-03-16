@@ -24,6 +24,7 @@ resource "aws_instance" "lab" {
 	  "sudo sed -i 's/\\-Xm/#\\ \\-Xm/g' /etc/elasticsearch/jvm.options",
 	  "sudo sh -c 'echo -Xms500m >>  /etc/elasticsearch/jvm.options'",
 	  "sudo sh -c 'echo -Xmx500m >>  /etc/elasticsearch/jvm.options'",
+	  "sudo sh -c 'echo network.host: 0.0.0.0 >> /etc/elasticsearch/elasticsearch.yml'",
 	  "sudo service elasticsearch start"
         ]
          connection {
