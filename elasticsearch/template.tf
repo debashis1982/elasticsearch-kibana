@@ -36,6 +36,9 @@ resource "aws_instance" "lab" {
    provisioner "remote-exec" {
      inline = [
 	"sudo yum -y install kibana",
+	"sudo sh -c 'echo elasticsearch.url: \\\"http://127.0.0.1:9200\\\" >> /etc/kibana/kibana.yml'",
+        "sudo sh -c 'echo server.host: \\\"0.0.0.0\\\" >> /etc/kibana/kibana.yml'",
+        "sudo sh -c 'echo server.port: \\\"5601\\\" >> /etc/kibana/kibana.yml'",
         "sudo nohup service kibana start"
      ]
  	connection {
