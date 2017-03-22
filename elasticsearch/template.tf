@@ -33,4 +33,16 @@ resource "aws_instance" "lab" {
             private_key = "${file("~/.ssh/debashis1982-new.pem")}"
          }
     }
+   provisioner "remote-exec" {
+     inline = [
+	"sudo yum -y install kibana",
+        "sudo nohup service kibana start"
+     ]
+ 	connection {
+            type = "ssh"
+            user = "ec2-user"
+            private_key = "${file("~/.ssh/debashis1982-new.pem")}"
+         }
+   }
+
 }
